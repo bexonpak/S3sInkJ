@@ -31,13 +31,17 @@ public class UtilitaryS3S {
     public static String sessionToken;
     public static String fGenUrl;
 
-    private final static String CONFIG_PATH = System.getProperty("user.dir") + "/config.txt";
+    private static String CONFIG_PATH = System.getProperty("user.dir") + "/config.txt";
 
     public static void init(String userInput, String authCodeVerifier) {
 
         setup();
         createSessionToken(userInput, authCodeVerifier);
 
+    }
+
+    public static void setConfigPath(String configPath) {
+        CONFIG_PATH = configPath + "/config.txt";
     }
 
     private static void createSessionToken(String userInput, String authCodeVerifier) {
@@ -248,20 +252,20 @@ public class UtilitaryS3S {
         return fGenUrl;
     }
 
-    public static void downloadImage(String objectUrl, String objectName, String imageType) throws IOException {
+    public static void downloadImage(String objectUrl, String objectName, String imageType, String filePath) throws IOException {
         System.out.println("Downloading " + objectName + " image type: " + imageType + " from " + objectUrl);
         URL url = new URL(objectUrl);
         InputStream in = url.openStream();
         // the output file will be saved in the assets folder
         // the one in src
-        File file = new File("src/main/resources/splatnet/assets/" + imageType + "/" + objectName + ".png");
+        File file = new File(filePath + File.pathSeparator + imageType + File.pathSeparator + objectName + ".png");
         file.createNewFile();
-        OutputStream out1 = new FileOutputStream("src/main/resources/splatnet/assets/" + imageType + "/" + objectName + ".png");
+        OutputStream out1 = new FileOutputStream(filePath + File.pathSeparator + imageType + File.pathSeparator + objectName + ".png");
 
         // the one in target
-        File file2 = new File("target/classes/splatnet/assets/" + imageType + "/" + objectName + ".png");
+        File file2 = new File(filePath + File.pathSeparator + imageType + File.pathSeparator + objectName + ".png");
         file2.createNewFile();
-        OutputStream out2 = new FileOutputStream("target/classes/splatnet/assets/" + imageType + "/" + objectName + ".png");
+        OutputStream out2 = new FileOutputStream(filePath + File.pathSeparator  + imageType + File.pathSeparator  + objectName + ".png");
 
         byte[] b = new byte[2048];
         int length;
