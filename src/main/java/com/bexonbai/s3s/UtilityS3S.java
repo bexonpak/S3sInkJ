@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UtilitaryS3S {
+public class UtilityS3S {
 
     public static final String A_VERSION = "0.6.0";
 
@@ -265,7 +265,7 @@ public class UtilitaryS3S {
         // the one in target
         File file2 = new File(filePath + File.pathSeparator + imageType + File.pathSeparator + objectName + ".png");
         file2.createNewFile();
-        OutputStream out2 = new FileOutputStream(filePath + File.pathSeparator  + imageType + File.pathSeparator  + objectName + ".png");
+        OutputStream out2 = new FileOutputStream(filePath + File.pathSeparator + imageType + File.pathSeparator + objectName + ".png");
 
         byte[] b = new byte[2048];
         int length;

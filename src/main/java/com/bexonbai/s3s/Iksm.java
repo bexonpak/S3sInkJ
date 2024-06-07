@@ -55,7 +55,7 @@ public class Iksm {
         } else {
             try { // try to get NSO version from f API
 
-                String fConfUrl = Paths.get(UtilitaryS3S.getfGenUrl(), "config").toString();
+                String fConfUrl = Paths.get(UtilityS3S.getfGenUrl(), "config").toString();
                 HashMap<String, String> fConfHeader = new HashMap<>();
                 fConfHeader.put("User-Agent", "s3s/" + S3S_VERSION);
                 String fConfRsp = Jsoup.connect(fConfUrl).headers(fConfHeader).ignoreContentType(true).execute().body();
@@ -715,19 +715,19 @@ public class Iksm {
     public static HashMap<String, String> getTokens(String sessionToken) {
         HashMap<String, String> tokens = new HashMap<>();
 
-        ArrayList<String> data = getGtoken(UtilitaryS3S.getfGenUrl(), sessionToken, S3S_VERSION);
+        ArrayList<String> data = getGtoken(UtilityS3S.getfGenUrl(), sessionToken, S3S_VERSION);
         String webServiceToken = data.get(0);
         String userNickname = data.get(1);
         String userLang = data.get(2);
         String userCountry = data.get(3);
 
-        String bullet = getBullet(webServiceToken, UtilitaryS3S.APP_USER_AGENT, userLang, userCountry);
+        String bullet = getBullet(webServiceToken, UtilityS3S.APP_USER_AGENT, userLang, userCountry);
 
         tokens.put("acc_loc", userLang + "-" + userCountry);
         tokens.put("gtoken", webServiceToken);
         tokens.put("bullettoken", bullet);
         tokens.put("session_token", sessionToken);
-        tokens.put("f_gen", UtilitaryS3S.getfGenUrl());
+        tokens.put("f_gen", UtilityS3S.getfGenUrl());
 
         return tokens;
     }

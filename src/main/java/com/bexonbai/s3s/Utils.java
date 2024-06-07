@@ -10,7 +10,7 @@ import java.util.*;
 public class Utils {
 
     /**
-     * contains all the suported keys
+     * contains all the supported keys
      */
     private static final ArrayList<String> SUPPORTED_KEYS = new ArrayList<String>() {{
         add("ignore_private");
