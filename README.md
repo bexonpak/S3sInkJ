@@ -83,8 +83,6 @@ Maven
 </dependency>
 ```
 
-dependencies {
-
 ### Sincere thanks for the following open source projects
 
 [cleeem/splatnet](https://github.com/cleeem/splatnet): Inherited from s3s [GPL-3.0](https://github.com/cleeem/splatnet?tab=readme-ov-file)
